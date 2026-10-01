@@ -1,4 +1,4 @@
-# MBB-ExamplePlugin 构建脚本
+﻿# MBB-ExamplePlugin 构建脚本
 param(
     [string]$Bot = ""
 )
