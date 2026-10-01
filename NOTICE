@@ -1,0 +1,9 @@
+Copyright 2026 MoBoxLab
+
+MBB-ExamplePlugin is an official example for MoBoxBot.
+
+The compiled plugin does not bundle MoBoxLib, fastjson, SQLite JDBC,
+Java-WebSocket, or other third-party runtime libraries. Those libraries are
+provided by the MoBoxBot runtime.
+
+MoBoxBot and MoBoxLib are licensed under the Apache License, Version 2.0.

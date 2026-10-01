@@ -1,0 +1,13 @@
+{
+  "name": "MBB-ExamplePlugin",
+  "version": "V0.1.0.0.0201",
+  "apiVersion": "0.1",
+  "main": "org.moboxlab.mbb.example.ExamplePlugin",
+  "author": "MoBoxLab",
+  "description": "MoBoxBot 官方插件开发示例",
+  "website": "https://github.com/MossCG/MBB-ExamplePlugin",
+  "depend": [],
+  "softDepend": [],
+  "loadBefore": [],
+  "provides": ["example"]
+}

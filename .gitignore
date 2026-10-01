@@ -1,0 +1,19 @@
+# 构建产物
+out/
+build/
+*.class
+*.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# 系统文件
+Thumbs.db
+.DS_Store
+
+# 运行目录
+logs/
+*.log
+*.db

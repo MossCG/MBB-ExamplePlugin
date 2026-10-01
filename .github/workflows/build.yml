@@ -1,0 +1,59 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout example plugin
+        uses: actions/checkout@v4
+
+      - name: Checkout MoBoxBot
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/MoBoxBot
+          path: MoBoxBot
+
+      - name: Setup Java 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+
+      - name: Build MoBoxBot
+        shell: powershell
+        run: .\MoBoxBot\build.ps1
+
+      - name: Build example plugin
+        shell: powershell
+        run: .\build.ps1 -Bot .\MoBoxBot\out\MoBoxBot.jar
+
+      - name: Read version
+        id: version
+        shell: powershell
+        run: |
+          $version = (Get-Content version.txt -Raw).Trim()
+          "tag=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MBB-ExamplePlugin
+          path: out/MBB-ExamplePlugin.jar
+
+      - name: Publish release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          target_commitish: ${{ github.sha }}
+          generate_release_notes: true
+          files: out/MBB-ExamplePlugin.jar

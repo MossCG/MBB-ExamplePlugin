@@ -1,0 +1,14 @@
+#MBB-ExamplePlugin 配置
+
+#是否输出事件示例日志
+eventLog: false
+#事件日志是否附带原始 JSON
+rawEventLog: false
+#普通示例命令默认回复
+helloText: "你好，这是 MBB-ExamplePlugin！"
+#周期任务间隔秒数
+taskPeriodSeconds: 60
+#延迟任务默认秒数
+taskDelaySeconds: 3
+#图片示例标题
+imageTitle: "MBB-ExamplePlugin"
